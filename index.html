@@ -8,6 +8,7 @@
   </head>
   <body>
     <img src="" id="value-proposition" width="648" />
+    <div id="images"></div>
     <script>
       console.log("About to fetch an image");
       catchImage().catch(error => {
@@ -20,6 +21,20 @@
         document.getElementById("value-proposition").src = URL.createObjectURL(
           blob
         );
+      }
+      console.log("About to fetch Images");
+      const images = ["1.jpg", "2.jpg", "3.jpg"];
+
+      catchImages(images).catch(e => console.error(e));
+      async function catchImages(images) {
+        const div = document.getElementById("images");
+
+        const content = images.map(image => {
+          return `
+        <img src="${image}" width="200"/>
+        `;
+        });
+        div.innerHTML = content;
       }
 
       /* fetch("value-proposition.jpg")
