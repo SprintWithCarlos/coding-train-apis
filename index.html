@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Train: Data/APIs 1</title>
+  </head>
+  <body>
+    <img src="" id="value-proposition" width="648" />
+    <script>
+      console.log("About to fetch an image");
+      fetch("value-proposition.jpg")
+        .then(response => {
+          console.log(response);
+          return response.blob();
+        })
+        .then(blob => {
+          console.log(blob);
+          document.getElementById(
+            "value-proposition"
+          ).src = URL.createObjectURL(blob);
+        });
+    </script>
+  </body>
+</html>
